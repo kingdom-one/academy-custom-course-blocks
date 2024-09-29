@@ -2,12 +2,25 @@
 	"name": "k1-custom-course-blocks",
 	"version": "1.0.0",
 	"description": "custom blocks for k1 academy ",
-	"main": "src/index.js",
+	"prettier": "@wordpress/prettier-config",
+	"browserslist": [
+		"extends @wordpress/browserslist-config"
+	],
+	"files": [
+		"build",
+		"inc",
+		"readme.md",
+		"LICENSE",
+		"index.php"
+	],
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"build": "wp-scripts build",
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "wp-scripts plugin-zip",
+		"start": "wp-scripts start"
 	},
 	"author": "Kingdom One",
-	"license": "GPL-2.0-or-later",
+	"license": "GPL-3.0-or-later",
 	"devDependencies": {
 		"@wordpress/scripts": "^30.0.2"
 	},
