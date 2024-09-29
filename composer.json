@@ -1,0 +1,12 @@
+{
+    "name": "kjroelke/k1-custom-course-blocks",
+    "description": "Custom blocks for k1 academy",
+    "type": "project",
+    "license": "gpl-2.0-or-later",
+    "authors": [
+        {
+            "name": "kingdomone"
+        }
+    ],
+    "require": {}
+}

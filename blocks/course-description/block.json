@@ -1,0 +1,26 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "k1-academy/course-description",
+	"title": "Course Description",
+	"category": "text",
+	"parent": [ "core/group" ],
+	"icon": "star",
+	"description": "Shows warning, error or success notices...",
+	"keywords": [ "course", "description" ],
+	"version": "1.0.0",
+	"textdomain": "k1-academy",
+	"attributes": {
+		"description": {
+			"type": "string",
+			"source": "meta",
+			"meta": "course_description"
+		}
+	},
+	"supports": {
+		"align": true
+	},
+	"editorScript": "file:./index.js",
+	"style": "file:./style.css",
+	"render": "file:./render.php"
+}

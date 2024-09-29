@@ -1,0 +1,17 @@
+{
+	"name": "k1-custom-course-blocks",
+	"version": "1.0.0",
+	"description": "custom blocks for k1 academy ",
+	"main": "src/index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "Kingdom One",
+	"license": "GPL-2.0-or-later",
+	"devDependencies": {
+		"@wordpress/scripts": "^30.0.2"
+	},
+	"overrides": {
+		"puppeteer-core": "^23.0.0"
+	}
+}
