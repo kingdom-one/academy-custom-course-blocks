@@ -1,0 +1,66 @@
+name: Deploy to GitHub Releases
+on:
+    push:
+        branches:
+            - main
+    workflow_dispatch:
+
+jobs:
+    bundle:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@main
+
+            - name: Setup Node.js
+              uses: actions/setup-node@main
+
+            - name: Install Deps and build
+              run: |
+                  npm ci
+                  npm run build
+
+            - name: Upload Assets
+              uses: actions/upload-artifact@main
+              with:
+                  name: bundle
+                  path: './build'
+
+            - name: Zip Plugin
+              run: npm run plugin-zip
+
+            - name: Upload Plugin
+              uses: actions/upload-artifact@main
+              with:
+                  name: plugin
+                  path: 'choctaw-ig-feed-plugin.zip'
+
+    deploy:
+        needs: bundle
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@main
+
+            - name: Download Plugin
+              uses: actions/download-artifact@main
+              with:
+                  name: plugin
+                  path: .
+
+            - name: Get version
+              id: version
+              run: |
+                  echo "VERSION=$(grep -Po 'Version: \K.*' cno-instagram-feed.php)" >> "$GITHUB_ENV"
+              shell: bash
+
+            - name: Create Release
+              uses: softprops/action-gh-release@v2
+              with:
+                  files: |
+                      choctaw-ig-feed-plugin.zip
+                  token: ${{ secrets.GITHUB_TOKEN }}
+                  tag_name: v${{ env.VERSION }}
+                  name: v${{ env.VERSION }}
+                  generate_release_notes: true
