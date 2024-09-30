@@ -9,20 +9,26 @@ registerBlockType( block.name, {
 	category: block.category,
 	attributes: block.attributes,
 	edit: ( { attributes, setAttributes } ) => {
-		const { description } = attributes;
+		const { features } = attributes;
+		console.log( features );
 		const blockProps = useBlockProps( {
-			className: 'k1-course-description',
+			className: 'k1-course-features',
 		} );
 		return (
 			<div { ...blockProps }>
-				<RichText
-					tagName="p"
-					value={ description }
-					onChange={ ( description ) => {
-						setAttributes( { description } );
-					} }
-					placeholder="Enter course description..."
-				/>
+				<p>
+					<strong>Course Features:</strong>
+				</p>
+				<ul>
+					<RichText
+						tagName="li"
+						value={ features }
+						onChange={ ( features ) => {
+							setAttributes( { features } );
+						} }
+						placeholder="Enter course features..."
+					/>
+				</ul>
 			</div>
 		);
 	},

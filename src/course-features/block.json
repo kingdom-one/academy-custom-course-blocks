@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "k1-academy/course-features",
+	"title": "Course Features",
+	"icon": "dashicons-star",
+	"category": "text",
+	"description": "Stores a list of course features where both Lifter and Cornerstone can find it.",
+	"keywords": [ "course", "features" ],
+	"version": "1.0.0",
+	"textdomain": "k1-academy",
+	"attributes": {
+		"features": {
+			"type": "array",
+			"source": "meta",
+			"meta": "course_features"
+		}
+	},
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php"
+}

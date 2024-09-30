@@ -1,19 +1,19 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "k1-academy/course-description",
-	"title": "Course Description",
+	"name": "k1-academy/course-price",
+	"title": "Course Price",
 	"icon": "star",
 	"category": "text",
-	"description": "Stores the course description where both Lifter and Cornerstone can find it.",
-	"keywords": [ "course", "description" ],
+	"description": "Stores the course price where both Lifter and Cornerstone can find it.",
+	"keywords": [ "course", "price" ],
 	"version": "1.0.0",
 	"textdomain": "k1-academy",
 	"attributes": {
-		"description": {
+		"price": {
 			"type": "string",
 			"source": "meta",
-			"meta": "course_description"
+			"meta": "course_price"
 		}
 	},
 	"editorScript": "file:./index.js",

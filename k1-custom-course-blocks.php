@@ -12,6 +12,7 @@
  * Requires at least: 6.6.0
  * Requires PHP: 8.1
  * Tested up to: 6.6.2
+ * Requires Plugins: lifterlms
  *
  * @package K1_Academy
  */
@@ -23,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
 
-require_once __DIR__ . '/inc/class-plugin-loader.php';
+require_once __DIR__ . '/includes/class-plugin-loader.php';
 $plugin_loader = new Plugin_Loader();
 
 register_activation_hook( __FILE__, array( $plugin_loader, 'activate' ) );
