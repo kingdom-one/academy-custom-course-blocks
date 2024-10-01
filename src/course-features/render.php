@@ -6,5 +6,6 @@
  * @subpackage ACF
  */
 
-echo get_post_meta( get_the_ID(), 'course_features', true );
-var_dump( $content );
+$features = get_post_meta( get_the_ID(), 'course_features' );
+var_dump( $features );
+var_dump( $attributes['features'] );

@@ -13,7 +13,8 @@
 		"features": {
 			"type": "array",
 			"source": "meta",
-			"meta": "course_features"
+			"meta": "course_features",
+			"default": [ "60-minute course" ]
 		}
 	},
 	"editorScript": "file:./index.js",
