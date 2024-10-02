@@ -6,6 +6,18 @@
  * @subpackage ACF
  */
 
-$features = get_post_meta( get_the_ID(), 'course_features' );
-var_dump( $features );
-var_dump( $attributes['features'] );
+$features = get_field( 'course_features' );
+?>
+<div class="k1-course-features">
+	<p><strong>Course Features:</strong></p>
+	<ul>
+		<?php
+		array_map(
+			function ( $feature ) {
+				echo "<li>{$feature}</li>";
+			},
+			$features
+		);
+		?>
+	</ul>
+</div>
