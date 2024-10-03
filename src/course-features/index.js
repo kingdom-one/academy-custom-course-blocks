@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from '@wordpress/element';
 import { registerBlockType } from '@wordpress/blocks';
-import { Icon, TextControl } from '@wordpress/components';
 import { useBlockProps } from '@wordpress/block-editor';
+import { Spinner } from '@wordpress/components';
 import block from './block.json';
+import PlaceholderBlock from '../placeholder-block/PlaceholderBlock';
+import useACF from '../hooks/useAcf';
 
 registerBlockType( block.name, {
 	apiVersion: 3,
@@ -10,75 +11,36 @@ registerBlockType( block.name, {
 	icon: block.icon,
 	category: block.category,
 	attributes: block.attributes,
-	edit: ( { attributes, setAttributes, isSelected } ) => {
-		const { features } = attributes;
-		const [ courseFeatures, setCourseFeatures ] = useState(
-			features || [ '60 minute course', '10 lessons', '5 quizzes' ]
-		);
-
-		useEffect( () => {
-			setAttributes( { features: courseFeatures } );
-		}, [ courseFeatures ] );
-
+	edit: ( { isSelected, context } ) => {
 		const blockProps = useBlockProps( {
 			className: 'k1-course-features',
 		} );
+		const { isLoading, course_features: courseFeatures } = useACF(
+			context.postId,
+			'course_features'
+		);
 		return (
 			<div { ...blockProps }>
-				<p>
-					<strong>Course Features:</strong>
-				</p>
-				<ul>
-					{ courseFeatures.map( ( feature, index ) => (
-						<li
-							style={ {
-								display: 'grid',
-								gridTemplateColumns: '95% 5%',
-								alignItems: 'stretch',
-								alignContent: 'stretch',
-							} }
-							key={ index }
-						>
-							<TextControl
-								value={ feature }
-								onChange={ ( newValue ) => {
-									const updatedFeatures = [
-										...courseFeatures,
-									];
-									updatedFeatures[ index ] = newValue;
-									setCourseFeatures( updatedFeatures );
-								} }
-							/>
-							<button
-								onClick={ ( ev ) => {
-									ev.preventDefault();
-									const updatedFeatures =
-										courseFeatures.filter(
-											( _, i ) => i !== index
-										);
-									setCourseFeatures( updatedFeatures );
-								} }
-							>
-								<Icon icon="minus" />
-							</button>
-						</li>
-					) ) }
-					{ isSelected && (
-						<li>
-							<button
-								onClick={ ( ev ) => {
-									ev.preventDefault();
-									setCourseFeatures( ( prev ) => [
-										...prev,
-										'',
-									] );
-								} }
-							>
-								Add New <Icon icon="plus" />
-							</button>
-						</li>
-					) }
-				</ul>
+				{ isLoading && <Spinner /> }
+				{ ! isSelected && ! isLoading && courseFeatures.length && (
+					<>
+						<p>
+							<strong>Course Features:</strong>
+						</p>
+						<ul>
+							{ courseFeatures.map( ( { feature }, i ) => (
+								<li key={ i }>{ feature }</li>
+							) ) }
+						</ul>
+					</>
+				) }
+				{ isSelected && (
+					<PlaceholderBlock
+						title="Course Features"
+						message="This block displays a list of course features. Features can
+					be edited with the Custom Fields panel below the editor."
+					/>
+				) }
 			</div>
 		);
 	},

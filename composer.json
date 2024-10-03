@@ -18,7 +18,7 @@
 		}
 	},
 	"scripts": {
-		"phpcs": "phpcs . includes/ blocks/ --extensions=php",
-		"phpcbf": "phpcbf . includes/ blocks/ --extensions=php"
+		"phpcs": "phpcs . includes/ src/ --extensions=php",
+		"phpcbf": "phpcbf . includes/ src/ --extensions=php"
 	}
 }

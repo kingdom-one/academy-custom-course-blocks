@@ -9,8 +9,7 @@
 	"keywords": [ "course", "features" ],
 	"version": "2.0.0",
 	"textdomain": "k1-academy",
-	"acf": {
-		"mode": "preview",
-		"renderTemplate": "render.php"
-	}
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php",
+	"usesContext": [ "postId" ]
 }

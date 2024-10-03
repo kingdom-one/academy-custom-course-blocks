@@ -1,6 +1,10 @@
 import { registerBlockType } from '@wordpress/blocks';
-import { useBlockProps, RichText } from '@wordpress/block-editor';
+import { useBlockProps } from '@wordpress/block-editor';
+import { useEntityRecord } from '@wordpress/core-data';
+import { Spinner } from '@wordpress/components';
 import block from './block.json';
+import PlaceholderBlock from '../placeholder-block/PlaceholderBlock';
+import useACF from '../hooks/useAcf';
 
 registerBlockType( block.name, {
 	apiVersion: 3,
@@ -8,21 +12,25 @@ registerBlockType( block.name, {
 	icon: block.icon,
 	category: block.category,
 	attributes: block.attributes,
-	edit: ( { attributes, setAttributes } ) => {
-		const { description } = attributes;
+	edit: ( { isSelected, context } ) => {
+		const { postId } = context;
+		const { isLoading, course_description: courseDescription } = useACF(
+			postId,
+			'course_description'
+		);
 		const blockProps = useBlockProps( {
 			className: 'k1-course-description',
 		} );
 		return (
 			<div { ...blockProps }>
-				<RichText
-					tagName="p"
-					value={ description }
-					onChange={ ( description ) => {
-						setAttributes( { description } );
-					} }
-					placeholder="Enter course description..."
-				/>
+				{ ! isSelected && ! isLoading && <p>{ courseDescription }</p> }
+				{ isLoading && <Spinner /> }
+				{ isSelected && (
+					<PlaceholderBlock
+						title="Course Description"
+						message="This block displays the course description. The description can be edited with the Custom Fields panel below the editor."
+					/>
+				) }
 			</div>
 		);
 	},

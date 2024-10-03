@@ -6,6 +6,5 @@
  * @subpackage ACF
  */
 
-$price = get_post_meta( get_the_ID(), 'course_price', true );
 ?>
-<div class="k1-course-price"><strong>Price: </strong> <?php echo $price; ?></div>
+<div class="k1-course-price"><strong>Price: </strong> <?php the_field( 'course_price' ); ?></div>

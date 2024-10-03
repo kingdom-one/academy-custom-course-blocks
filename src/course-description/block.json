@@ -9,13 +9,7 @@
 	"keywords": [ "course", "description" ],
 	"version": "1.0.0",
 	"textdomain": "k1-academy",
-	"attributes": {
-		"description": {
-			"type": "string",
-			"source": "meta",
-			"meta": "course_description"
-		}
-	},
 	"editorScript": "file:./index.js",
-	"render": "file:./render.php"
+	"render": "file:./render.php",
+	"usesContext": [ "postId" ]
 }

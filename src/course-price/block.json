@@ -9,13 +9,7 @@
 	"keywords": [ "course", "price" ],
 	"version": "1.0.0",
 	"textdomain": "k1-academy",
-	"attributes": {
-		"price": {
-			"type": "string",
-			"source": "meta",
-			"meta": "course_price"
-		}
-	},
 	"editorScript": "file:./index.js",
-	"render": "file:./render.php"
+	"render": "file:./render.php",
+	"usesContext": [ "postId" ]
 }
