@@ -60,7 +60,7 @@ jobs:
               with:
                   files: |
                       k1-custom-course-blocks.zip
-                  token: ${{ secrets.GITHUB_TOKEN }}
+                  token: ${{ secrets.KJR_WORKFLOW_PAT }}
                   tag_name: v${{ env.VERSION }}
                   name: v${{ env.VERSION }}
                   generate_release_notes: true
