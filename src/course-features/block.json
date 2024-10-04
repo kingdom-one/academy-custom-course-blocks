@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "k1-academy/course-features",
 	"title": "Course Features",
-	"icon": "star",
+	"icon": "block-default",
 	"category": "text",
 	"description": "Stores a list of course features where both Lifter and Cornerstone can find it.",
 	"keywords": [ "course", "features" ],

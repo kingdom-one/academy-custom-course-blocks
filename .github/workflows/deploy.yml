@@ -33,7 +33,7 @@ jobs:
               uses: actions/upload-artifact@main
               with:
                   name: plugin
-                  path: 'choctaw-ig-feed-plugin.zip'
+                  path: 'k1-academy-custom-course-blocks.zip'
 
     deploy:
         needs: bundle
@@ -52,14 +52,14 @@ jobs:
             - name: Get version
               id: version
               run: |
-                  echo "VERSION=$(grep -Po 'Version: \K.*' cno-instagram-feed.php)" >> "$GITHUB_ENV"
+                  echo "VERSION=$(grep -Po 'Version: \K.*' k1-custom-course-blocks.php)" >> "$GITHUB_ENV"
               shell: bash
 
             - name: Create Release
               uses: softprops/action-gh-release@v2
               with:
                   files: |
-                      choctaw-ig-feed-plugin.zip
+                      k1-academy-custom-course-blocks.zip
                   token: ${{ secrets.GITHUB_TOKEN }}
                   tag_name: v${{ env.VERSION }}
                   name: v${{ env.VERSION }}

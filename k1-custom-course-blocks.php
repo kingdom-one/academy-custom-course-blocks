@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: K1 Custom Course Blocks
- * Plugin URI: https://github.com/kingdom-one/k1-custom-course-blocks
+ * Plugin URI: https://github.com/kingdom-one/academy-custom-course-blocks
  * Description: A set of read-only Custom Blocks to extend Lifter LMS for K1 Academy with Advanced Custom Fields Pro.
  * Version: 1.0.0
  * Author: Kingdom One

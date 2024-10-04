@@ -1,6 +1,5 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { useBlockProps } from '@wordpress/block-editor';
-import { useEntityRecord } from '@wordpress/core-data';
 import { Spinner } from '@wordpress/components';
 import block from './block.json';
 import PlaceholderBlock from '../placeholder-block/PlaceholderBlock';

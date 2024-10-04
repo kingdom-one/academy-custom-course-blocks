@@ -18,7 +18,7 @@
 		}
 	},
 	"scripts": {
-		"phpcs": "phpcs . includes/ src/ --extensions=php",
-		"phpcbf": "phpcbf . includes/ src/ --extensions=php"
+		"phpcs": "phpcs . includes/ src/ --extensions=php --ignore=build/",
+		"phpcbf": "phpcbf . includes/ src/ --extensions=php --ignore=build/"
 	}
 }
