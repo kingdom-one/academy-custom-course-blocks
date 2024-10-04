@@ -33,7 +33,7 @@ jobs:
               uses: actions/upload-artifact@main
               with:
                   name: plugin
-                  path: 'k1-academy-custom-course-blocks.zip'
+                  path: 'k1-custom-course-blocks.zip'
 
     deploy:
         needs: bundle
@@ -59,7 +59,7 @@ jobs:
               uses: softprops/action-gh-release@v2
               with:
                   files: |
-                      k1-academy-custom-course-blocks.zip
+                      k1-custom-course-blocks.zip
                   token: ${{ secrets.GITHUB_TOKEN }}
                   tag_name: v${{ env.VERSION }}
                   name: v${{ env.VERSION }}
