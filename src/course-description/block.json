@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "k1-academy/course-description",
 	"title": "Course Description",
-	"category": "text",
+	"category": "k1-custom-course-blocks",
 	"icon": "block-default",
 	"description": "Stores the course description where both Lifter and Cornerstone can find it.",
 	"keywords": [ "course", "description" ],

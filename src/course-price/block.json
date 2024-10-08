@@ -4,7 +4,7 @@
 	"name": "k1-academy/course-price",
 	"title": "Course Price",
 	"icon": "block-default",
-	"category": "text",
+	"category": "k1-custom-course-blocks",
 	"description": "Stores the course price where both Lifter and Cornerstone can find it.",
 	"keywords": [ "course", "price" ],
 	"version": "1.0.0",

@@ -36,6 +36,7 @@ class Plugin_Loader {
 			'course-price',
 		);
 		add_action( 'init', array( $this, 'register_blocks' ) );
+		add_filter( 'block_categories_all', array( $this, 'add_block_category' ) );
 		add_filter( 'allowed_block_types_all', array( $this, 'disallow_blocks' ), 10, 2 );
 	}
 
@@ -76,44 +77,51 @@ class Plugin_Loader {
 	}
 
 	/**
-	 * Disallows Blocks
+	 * Adds a Custom Block Category
+	 *
+	 * @param array $categories The existing block categories.
+	 * @return array
+	 */
+	public function add_block_category( array $categories ): array {
+		$categories[] = array(
+			'slug'  => 'k1-custom-course-blocks',
+			'title' => 'Kingdom One Course Blocks',
+		);
+		return $categories;
+	}
+
+	/**
+	 * Hides custom course blocks if the post type is not 'course'.
 	 *
 	 * @param array|bool $allowed_block_types Array of block type slugs, or boolean to enable/disable all.
 	 * @param object     $block_editor_context The current block editor context.
 	 * @return array
 	 */
-	public function disallow_blocks( array|bool $allowed_block_types, object $block_editor_context ): array {
+	public function disallow_blocks( array|bool $allowed_block_types, object $block_editor_context ): array|bool {
 		if ( isset( $block_editor_context->post ) &&
-		'course' !== $block_editor_context->post->post_type ) {
+		'course' === $block_editor_context->post->post_type ) {
 			return $allowed_block_types;
 		}
 
 		// Create an array of disallowed blocks.
-		$disallowed_blocks = array_map(
+		$block_to_hide = array_map(
 			fn( $block ) => "{$this->block_namespace}/{$block}",
 			$this->blocks
 		);
+
 		// Get all registered blocks if $allowed_block_types is not already set.
 		if ( ! is_array( $allowed_block_types ) || empty( $allowed_block_types ) ) {
 			$registered_blocks   = \WP_Block_Type_Registry::get_instance()->get_all_registered();
 			$allowed_block_types = array_keys( $registered_blocks );
 		}
 
-		// Create a new array for the allowed blocks.
-		$filtered_blocks = array();
+		// Filter out the blocks we want to hide.
+		$filtered_blocks = array_filter(
+			$allowed_block_types,
+			fn( $block ) => ! in_array( $block, $block_to_hide, true )
+		);
 
-		// Loop through each block in the allowed blocks list.
-		foreach ( $allowed_block_types as $block ) {
-
-			// Check if the block is not in the disallowed blocks list.
-			if ( ! in_array( $block, $disallowed_blocks, true ) ) {
-
-				// If it's not disallowed, add it to the filtered list.
-				$filtered_blocks[] = $block;
-			}
-		}
-
-		// Return the filtered list of allowed blocks
+		// Return the list of allowed blocks
 		return $filtered_blocks;
 	}
 
