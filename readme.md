@@ -12,6 +12,11 @@ This plugin expects Advanced Custom Fields PRO (ACF) and Lifter LMS to be instal
 
 # Changelog
 
+## v1.0.2
+
+-   Now registering ACF field at the appropriate hook
+-   Added ACF stubs to composer
+
 ## v1.0.1
 
 -   Fixed a bug that hid the blocks when they were supposed to be shown (and vice-versa)
