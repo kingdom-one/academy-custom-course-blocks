@@ -12,6 +12,11 @@ This plugin expects Advanced Custom Fields PRO (ACF) and Lifter LMS to be instal
 
 # Changelog
 
+## v1.0.1
+
+-   Fixed a bug that hid the blocks when they were supposed to be shown (and vice-versa)
+-   Added the blocks to their own category
+
 ## v1.0.0
 
 -   First release!

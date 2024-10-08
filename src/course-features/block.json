@@ -4,7 +4,7 @@
 	"name": "k1-academy/course-features",
 	"title": "Course Features",
 	"icon": "block-default",
-	"category": "text",
+	"category": "k1-custom-course-blocks",
 	"description": "Stores a list of course features where both Lifter and Cornerstone can find it.",
 	"keywords": [ "course", "features" ],
 	"version": "2.0.0",
