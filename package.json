@@ -1,6 +1,6 @@
 {
 	"name": "k1-custom-course-blocks",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "custom blocks for k1 academy ",
 	"prettier": "@wordpress/prettier-config",
 	"browserslist": [
@@ -11,7 +11,7 @@
 		"inc",
 		"readme.md",
 		"LICENSE",
-		"index.php"
+		"k1-custom-course-blocks.php"
 	],
 	"scripts": {
 		"build": "wp-scripts build",
