@@ -1,7 +1,7 @@
 {
 	"name": "k1-custom-course-blocks",
 	"version": "1.0.2",
-	"description": "custom blocks for k1 academy ",
+	"description": "Custom blocks for K1 Academy  https://academy.kingdomone.co",
 	"prettier": "@wordpress/prettier-config",
 	"browserslist": [
 		"extends @wordpress/browserslist-config"
