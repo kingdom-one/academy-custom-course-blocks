@@ -9,7 +9,8 @@
 		}
 	],
 	"require-dev": {
-		"wp-coding-standards/wpcs": "*"
+		"wp-coding-standards/wpcs": "*",
+		"php-stubs/acf-pro-stubs": "^6.2"
 	},
 	"config": {
 		"allow-plugins": {

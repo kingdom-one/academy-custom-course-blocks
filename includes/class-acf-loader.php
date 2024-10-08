@@ -17,7 +17,7 @@ class ACF_Loader {
 	 * ACF_Loader constructor.
 	 */
 	public function __construct() {
-		add_action( 'acf/include_fields', array( $this, 'register_fields' ) );
+		add_action( 'init', array( $this, 'register_fields' ) );
 	}
 
 	/**
